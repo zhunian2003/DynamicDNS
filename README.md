@@ -11,13 +11,12 @@
 下载地址： [点击此处](https://gitee.com/zhunian/dynamic-dns/attach_files/958797/download/DynamicDNS.zip)
 
 ##### 打开软件填写配置信息并保存 
-![step-1](http://ww1.sinaimg.cn/large/6227d444jw1f2o6j6zcdoj20ww0mqdhz.jpg)
+![step-1](![输入图片说明](DNSPng/1.png))
 
 ##### 安装服务
-![step-2](http://ww3.sinaimg.cn/large/6227d444jw1f2o6k8kqihj20wu0mowgr.jpg)
+![step-2](![输入图片说明](DNSPng/2.png))
 
 ##### 启动服务
-![step-2](http://ww3.sinaimg.cn/large/6227d444jw1f2o6kk0r7aj20wy0mi76b.jpg)
-
+![step-2](![输入图片说明](DNSPng/3.png))
 
 ##### OK, 大功告成！
