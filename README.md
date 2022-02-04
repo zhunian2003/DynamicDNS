@@ -11,7 +11,7 @@
 下载地址： [点击此处](https://gitee.com/zhunian/dynamic-dns/attach_files/958797/download/DynamicDNS.zip)
 
 ##### 打开软件填写配置信息并保存 
-![step-1](![配置1](https://gitee.com/zhunian/dynamic-dns/blob/master/DNSPng/1.png))
+![step-1](![输入图片说明](https://gitee.com/zhunian/dynamic-dns/blob/master/DNSPng/1.png))
 
 ##### 安装服务
 ![step-2](![配置2](https://gitee.com/zhunian/dynamic-dns/blob/master/DNSPng/2.png))
