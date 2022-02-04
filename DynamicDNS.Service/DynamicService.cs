@@ -180,7 +180,9 @@ namespace DynamicDNS.Service {
                             Logger.Write("主机头不存在，创建记录，类型：" + recordType + "," + ip);
                             record = client.CreateRecord(domain.Id.ToString(), subDomain, ip, recordType);
                             client.Clear();
-                            Logger.Write("已创建记录，ID为：{0}，值为：{1}", record.Id, record.Value);
+                            Logger.Write("已创建记录，ID为：{0}，值为：{1}", record.Id, ip);
+                            isLock = false;
+                            return true;
                         }
                         else
                             throw ex;
@@ -193,9 +195,22 @@ namespace DynamicDNS.Service {
                     }
                     else if (ip != record.Value) {
                         Logger.Write("IP变动，刷新DNS。IP地址为：{0}，记录类型为：{1}", ip, recordType);
-                        client.DDNS(domain.Id.ToString(), subDomain, record.Id, recordType, ip);
-                        client.Clear();
-                        Logger.Write("已更换IP：{0}", ip);
+                        if (recordType == "A")
+                        {
+                            client.DDNS(domain.Id.ToString(), record.Id, subDomain, ip);
+                            client.Clear();
+                            Logger.Write("已更换IP：{0}", ip);
+                        }
+                        else if (recordType == "AAAA")
+                        {
+                            client.ModifyRecord(domain.Id.ToString(), record.Id, subDomain, ip, recordType);
+                            client.Clear();
+                            Logger.Write("已更换IPv6：{0}", ip);
+                        } 
+                        else
+                        {
+                            Logger.Write("不支持的记录类型：" + recordType);
+                        }
                     }
                     else {
                         Logger.Write("本地IP与服务器IP一致，无需更新");

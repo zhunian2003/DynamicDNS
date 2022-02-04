@@ -32,12 +32,6 @@ namespace DNSPod.Api.Request {
         public string RecordLine { get; set; }
 
         /// <summary>
-        /// 记录类型，通过API记录类型获得，大写英文，比如：A。
-        /// </summary>
-        [Parameter("record_type")]
-        public string RecordType { get; set; }
-
-        /// <summary>
         /// 主机记录，如 www
         /// </summary>
         [Parameter("sub_domain")]

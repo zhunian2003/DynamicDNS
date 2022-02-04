@@ -70,6 +70,7 @@
     <Compile Include="Request\DDNSRequest.cs" />
     <Compile Include="Request\DomainsRequest.cs" />
     <Compile Include="Request\RecordCreateRequest.cs" />
+    <Compile Include="Request\RecordModifyRequest.cs" />
     <Compile Include="Request\RecordsRequest.cs" />
     <Compile Include="Request\VersionRequest.cs" />
     <Compile Include="Response\DomainsResponse.cs" />

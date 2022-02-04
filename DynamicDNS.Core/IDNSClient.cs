@@ -14,6 +14,8 @@ namespace DynamicDNS.Core {
 
         Record CreateRecord(string domainId, string recordId, string value, string recordType);
 
-        void DDNS(string domainId, string subDomain, string recordId, string recordType, string ip);
+        Record ModifyRecord(string domainId, string recordId, string subDomain, string value, string recordType);
+
+        void DDNS(string domainId, string recordId, string subDomain, string ip);
     }
 }

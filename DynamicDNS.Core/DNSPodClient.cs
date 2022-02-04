@@ -42,7 +42,11 @@ namespace DynamicDNS.Core {
             this.password = password;
         }
 
-
+        /// <summary>
+        /// 本接口 Domain.List.Filter 用于获取域名列表
+        /// </summary>
+        /// <param name="domainName"></param>
+        /// <returns></returns>
         public Domain GetDomain(string domainName) {
 
             if (string.IsNullOrWhiteSpace(domainName))
@@ -69,6 +73,13 @@ namespace DynamicDNS.Core {
             }, string.Format("domain_{0}", domainName), TimeSpan.FromDays(1));
         }
 
+        /// <summary>
+        /// 本接口 Record.List 用于获取解析记录列表
+        /// </summary>
+        /// <param name="domainId"></param>
+        /// <param name="subDomain"></param>
+        /// <param name="recordType"></param>
+        /// <returns></returns>
         public Record GetRecord(string domainId, string subDomain, string recordType) {
 
             if (string.IsNullOrWhiteSpace(domainId))
@@ -84,6 +95,8 @@ namespace DynamicDNS.Core {
                 request.Password = password;
                 request.Token = token;
                 request.DomainId = domainId;
+                request.subDomain = subDomain;
+                request.RecordType = recordType;
                 var response = request.Execute();
 
                 if (response.Records == null)
@@ -107,7 +120,14 @@ namespace DynamicDNS.Core {
 
         }
 
-
+        /// <summary>
+        /// 本接口 Record.Create 用于添加解析记录
+        /// </summary>
+        /// <param name="domainId"></param>
+        /// <param name="subDomain"></param>
+        /// <param name="value"></param>
+        /// <param name="recordType"></param>
+        /// <returns></returns>
         public Record CreateRecord(string domainId, string subDomain, string value, string recordType) {
 
             if (string.IsNullOrWhiteSpace(domainId))
@@ -142,8 +162,17 @@ namespace DynamicDNS.Core {
             }, string.Format("record_{0}_{1}", domainId, subDomain), TimeSpan.FromDays(1));
         }
 
-
-        public void DDNS(string domainId, string subDomain, string recordId, string recordType, string ip) {
+        /// <summary>
+        /// 本接口 Record.Modify 用于修改解析记录
+        /// </summary>
+        /// <param name="domainId"></param>
+        /// <param name="recordId"></param>
+        /// <param name="subDomain"></param>
+        /// <param name="value"></param>
+        /// <param name="recordType"></param>
+        /// <returns></returns>
+        public Record ModifyRecord(string domainId, string recordId, string subDomain, string value, string recordType)
+        {
             if (string.IsNullOrWhiteSpace(domainId))
                 throw new ArgumentNullException("domainId");
 
@@ -153,8 +182,47 @@ namespace DynamicDNS.Core {
             if (string.IsNullOrWhiteSpace(recordId))
                 throw new ArgumentNullException("recordId");
 
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentNullException("value");
+
             if (string.IsNullOrWhiteSpace(recordType))
                 throw new ArgumentNullException("recordType");
+
+            return httpCacheClient.GetCacheData(() => {
+                Logger.Write("Call API:ModifyRecordRequest");
+                RecordModifyRequest request = new RecordModifyRequest();
+                request.Email = email;
+                request.Password = password;
+                request.Token = token;
+                request.DomainId = domainId;
+                request.SubDomain = subDomain;
+                request.RecordId = recordId;
+                request.Value = value;// DNSHelper.GetLocalIP();
+                request.RecordLine = "默认";
+                request.RecordType = recordType;
+                request.MX = "1";
+                var response = request.Execute();
+                Logger.Write("API Complete:ModifyRecordRequest");
+                return response.Record;
+            }, string.Format("record_{0}_{1}", domainId, recordId), TimeSpan.FromDays(1));
+        }
+
+        /// <summary>
+        /// 本接口 Record.Ddns 用于更新动态 DNS 记录【不支持ipv6啊】
+        /// </summary>
+        /// <param name="domainId"></param>
+        /// <param name="recordId"></param>
+        /// <param name="subDomain"></param>
+        /// <param name="ip"></param>
+        public void DDNS(string domainId, string recordId, string subDomain, string ip) {
+            if (string.IsNullOrWhiteSpace(domainId))
+                throw new ArgumentNullException("domainId");
+
+            if (string.IsNullOrWhiteSpace(subDomain))
+                throw new ArgumentNullException("subDomain");
+
+            if (string.IsNullOrWhiteSpace(recordId))
+                throw new ArgumentNullException("recordId");
 
             Logger.Write("Call API:DDNSRequest");
             DDNSRequest request = new DDNSRequest();
@@ -165,7 +233,6 @@ namespace DynamicDNS.Core {
             request.SubDomain = subDomain;
             request.RecordId = recordId;
             request.Value = ip;// DNSHelper.GetLocalIP();
-            request.RecordType = recordType;
             request.RecordLine = "默认";
             var response = request.Execute();
             Logger.Write("API Complete:DDNSRequest");
