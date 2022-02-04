@@ -89,6 +89,7 @@
             // tbeRecord
             // 
             this.tbeRecord.BackColor = System.Drawing.Color.White;
+            this.tbeRecord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbeRecord.Location = new System.Drawing.Point(33, 290);
             this.tbeRecord.Margin = new System.Windows.Forms.Padding(2);
             this.tbeRecord.Name = "tbeRecord";
@@ -100,6 +101,7 @@
             // tbeTokenID
             // 
             this.tbeTokenID.BackColor = System.Drawing.Color.White;
+            this.tbeTokenID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbeTokenID.Location = new System.Drawing.Point(33, 136);
             this.tbeTokenID.Margin = new System.Windows.Forms.Padding(2);
             this.tbeTokenID.Name = "tbeTokenID";
@@ -112,6 +114,7 @@
             // tbeToken
             // 
             this.tbeToken.BackColor = System.Drawing.Color.White;
+            this.tbeToken.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbeToken.Location = new System.Drawing.Point(33, 86);
             this.tbeToken.Margin = new System.Windows.Forms.Padding(2);
             this.tbeToken.Name = "tbeToken";
@@ -124,6 +127,7 @@
             // tbeInterval
             // 
             this.tbeInterval.BackColor = System.Drawing.Color.White;
+            this.tbeInterval.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbeInterval.Location = new System.Drawing.Point(33, 343);
             this.tbeInterval.Margin = new System.Windows.Forms.Padding(2);
             this.tbeInterval.Name = "tbeInterval";
@@ -135,6 +139,7 @@
             // tbeSubDomain
             // 
             this.tbeSubDomain.BackColor = System.Drawing.Color.White;
+            this.tbeSubDomain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbeSubDomain.Location = new System.Drawing.Point(33, 237);
             this.tbeSubDomain.Margin = new System.Windows.Forms.Padding(2);
             this.tbeSubDomain.Name = "tbeSubDomain";
@@ -146,6 +151,7 @@
             // tbeDomain
             // 
             this.tbeDomain.BackColor = System.Drawing.Color.White;
+            this.tbeDomain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbeDomain.Location = new System.Drawing.Point(33, 186);
             this.tbeDomain.Margin = new System.Windows.Forms.Padding(2);
             this.tbeDomain.Name = "tbeDomain";
