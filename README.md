@@ -1,4 +1,4 @@
-#基于DNSPod构建的DDNS软件。目前支持动态解析A(IPv4)记录和AAAA(IPv6)记录。
+#二次开发，基于DNSPod构建的DDNS软件，可将本机公网IP实时更新到自己域名解析记录中。支持ipv4和ipv6解析。
 
 ### 使用说明
 
@@ -11,12 +11,12 @@
 下载地址： [点击此处](https://gitee.com/zhunian/dynamic-dns/attach_files/958797/download/DynamicDNS.zip)
 
 ##### 打开软件填写配置信息并保存 
-![step-1](![img](https://gitee.com/zhunian/dynamic-dns/raw/master/DNSPng/1.png))
+![step-1](https://gitee.com/zhunian/dynamic-dns/raw/master/DNSPng/1.png)
 
 ##### 安装服务
-![step-2](![img](https://gitee.com/zhunian/dynamic-dns/raw/master/DNSPng/2.png))
+![step-2](https://gitee.com/zhunian/dynamic-dns/raw/master/DNSPng/2.png)
 
 ##### 启动服务
-![step-3](![img](https://gitee.com/zhunian/dynamic-dns/raw/master/DNSPng/3.png))
+![step-3](https://gitee.com/zhunian/dynamic-dns/raw/master/DNSPng/3.png)
 
 ##### OK, 大功告成！
