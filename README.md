@@ -1,4 +1,4 @@
-#基于DNSPod构建的DDNS软件
+#基于DNSPod构建的DDNS软件。目前支持动态解析A(IPv4)记录和AAAA(IPv6)记录。
 
 ### 使用说明
 
