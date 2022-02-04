@@ -100,7 +100,7 @@ namespace DynamicDNS.Service {
 
         protected override void OnStart(string[] args) {
 
-            Logger.Write("服务启动！");
+            Logger.Write("服务启动！" + DateTime.Now);
 
             if((string.IsNullOrWhiteSpace(token) || string.IsNullOrWhiteSpace(tokenID)) &&
                (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))) {
@@ -176,11 +176,11 @@ namespace DynamicDNS.Service {
                     catch (DNSPodException ex) {
                         Logger.Write("Start CreateRecord===>" + domain.Id.ToString());
                         // 如果记录不存在则创建一个
-                        if (ex.Code == 22) {
+                        if (ex.Code == 10 || ex.Code == 22) {
                             Logger.Write("主机头不存在，创建记录，类型：" + recordType + "," + ip);
                             record = client.CreateRecord(domain.Id.ToString(), subDomain, ip, recordType);
                             client.Clear();
-                            Logger.Write("已创建记录，ID为：{0}，值为：{1}", record.Id, ip);
+                            Logger.Write("已创建记录，ID为：{0}，值为：{1}，类型为：{2}", record.Id, ip, recordType);
                             isLock = false;
                             return true;
                         }
