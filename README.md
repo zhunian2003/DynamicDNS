@@ -19,4 +19,7 @@
 ##### 启动服务
 ![step-3](https://gitee.com/zhunian/dynamic-dns/raw/master/DNSPng/3.png)
 
+##### 域名申请
+![step-4](https://gitee.com/zhunian/dynamic-dns/raw/master/DNSPng/4.png)
+
 ##### OK, 大功告成！
